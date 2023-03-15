@@ -1,6 +1,6 @@
 <template>
    <form @submit.prevent="search()">
-    <input type="text" v-model="searchText" />
+    <input type="text" v-model="searchText" placeholder="Type any music name" />
     <button @click="search()">Search</button>
     <div v-if="data.results">
       <div v-for="album in data.results" :key="album.artistId">
@@ -12,9 +12,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { ItunesTypes } from "./types/ItunesTypes.interface";
 import AlbumsComp from './components/AlbumsComp.vue'
 import iTunesAPI from './services/iTunesAPI'
+import { ItunesTypes } from './types/ItunesTypes.interface';
 
 export default defineComponent({
   name: 'App',
