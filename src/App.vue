@@ -1,7 +1,7 @@
 <template>
    <form @submit.prevent="search()">
     <input type="text" v-model="searchText" placeholder="Type any music name" />
-    <button @click="search()">Search</button>
+    <button>Search</button>
     <div v-if="data.results">
       <div v-for="album in data.results" :key="album.artistId">
         <AlbumsComp :album="album" />
@@ -32,6 +32,7 @@ export default defineComponent({
     try {
         const response = await iTunesAPI.getItunesData(this.searchText);
         this.data = response.data;
+        console.log(response.data)
       } catch (error) {
         console.error(error);
       }
